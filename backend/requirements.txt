@@ -1,10 +1,25 @@
-fastapi>=0.110
+# Web 框架（固定版本：starlette 1.x 的 TestClient WebSocket 行为异常，
+# 0.46.2 + httpx 0.27.2 为已验证稳定组合）
+fastapi==0.115.12
+starlette==0.46.2
+httpx==0.27.2
 uvicorn>=0.29
 python-multipart>=0.0.9
+
+# YOLOv8 目标检测（>=8.1 以支持 split 等较新参数）
 ultralytics>=8.1.0
+
+# 深度学习框架（有 NVIDIA GPU 请按 README 安装 CUDA 版，
+# 本项目训练与验证使用 torch 2.1.0 + cu118）
 torch>=2.0.0
-opencv-python>=4.8.0
-numpy>=1.24.0
+
+# 图像处理（5.x 要求 numpy>=2，与 torch 2.1 不兼容）
+opencv-python>=4.8.0,<5
 Pillow>=9.0.0
+
+# 数据处理与可视化（torch 2.1 基于 numpy 1.x 编译，勿升到 2.x）
+numpy>=1.24.0,<2
+matplotlib>=3.7.0
+
+# 测试
 pytest>=8.0
-httpx>=0.27
